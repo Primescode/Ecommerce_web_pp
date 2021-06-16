@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-MONGODB_URL = "mongodb+srv://Admin-shubham:admin123@mybackendcluster.i2yc9.mongodb.net/bucketvio_developement?retryWrites=true&w=majority";
-mongoose.connect(MONGODB_URL, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true});
+const URI = process.env.MONGODB_URL;
+mongoose.connect(URI, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true});
 
 
 const db = mongoose.connection;
