@@ -1,13 +1,11 @@
 require("dotenv").config();
 const express = require('express');
-const mongoose = require("mongoose");
+const session = require("express-session");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require('body-parser');
-
-
-
-
+const passport = require('passport');
+const passportJWT = require("./config/passport_jwt_strategy");
 
 // setting up database
 const app = express();
@@ -18,7 +16,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json({type: 'application/x-www-form-urlencoded'}));
 app.use(cookieParser());
 app.use(cors());
+
+// setting up passport 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// setting up routers
 app.use("/", require("./routes"));
+
 
 //setting up port 
 
